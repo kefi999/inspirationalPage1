@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCoords, fetchCurrentWeather } from "./WeatherSlice";
 import { selectCurrentWeather } from "./WeatherSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Weather.css";
 function Weather() {
   const weather = useSelector(selectCurrentWeather);
-  console.log(weather);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

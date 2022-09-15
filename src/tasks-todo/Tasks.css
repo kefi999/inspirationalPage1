@@ -1,0 +1,52 @@
+.todotable {
+  /* display: flex;
+  justify-content: center; */
+}
+.isSection {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+.submitbutton {
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+.button1 {
+  width: 6rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  background-color: aquamarine;
+  cursor: pointer;
+}
+.button1:hover {
+  background-color: rgb(19, 253, 175);
+}
+.button1:active {
+  background-color: rgb(19, 253, 175);
+  transform: translateY(4px);
+}
+.input {
+  border-radius: 5px;
+}
+.tasks {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.list-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border: 2px;
+  border-color: aquamarine;
+  border-style: double;
+  padding: 10px;
+}
+.list-group-item {
+  background-color: aquamarine;
+}
+.titleTasks {
+  color: aquamarine;
+}

@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addTask, selectTask } from "./TaskToDoSlice";
 import { v4 as uuidv4 } from "uuid";
+import "./Tasks.css";
 export default function TasksToDo() {
   const [input, setInput] = useState("");
   const [arrayTp, setArrayTp] = useState([]);
@@ -13,10 +14,8 @@ export default function TasksToDo() {
 
   const addToDoTask = (e) => {
     e.preventDefault();
+    if (input === "") return;
     dispatch(addTask({ name: input }));
-    setInput("");
-  };
-  const printToDoTask = () => {
     setInput("");
   };
 
@@ -27,20 +26,26 @@ export default function TasksToDo() {
   }, [tasks, setArrayTp]);
 
   return (
-    <div className="container mt-3 offset-md-5">
-      <div>
-        <div>
-          <form type="submit" onSubmit={addToDoTask}>
-            <input
-              type="text"
-              onChange={(e) => setInput(e.target.value)}
-              id="inputField"
-              value={input}
-            />
-          </form>
-        </div>
-        <button onClick={printToDoTask}>Print</button>
-        <h1>Tasks</h1>
+    <>
+      <div className="isSection">
+        <form type="submit" onSubmit={addToDoTask}>
+          <input
+            type="text"
+            onChange={(e) => setInput(e.target.value)}
+            id="inputField"
+            value={input}
+            className="input"
+          />
+        </form>
+      </div>
+
+      <div className="submitbutton">
+        <button className="button1" onClick={addToDoTask}>
+          Add Task
+        </button>
+      </div>
+      <div className="tasks">
+        <h1 className="titleTasks">Tasks</h1>
         <ul className="list-group">
           {arrayTp.map((arr) => {
             return (
@@ -51,6 +56,6 @@ export default function TasksToDo() {
           })}
         </ul>
       </div>
-    </div>
+    </>
   );
 }

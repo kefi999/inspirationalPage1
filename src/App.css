@@ -1,0 +1,6 @@
+.mainSection {
+  background-image: url("./pictures/mainbackground.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

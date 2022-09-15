@@ -15,7 +15,6 @@ const initialState = {
 export const fetchCurrentWeather = createAsyncThunk(
   "weather/fetchCurrent",
   async (location) => {
-    console.log("asd");
     const response = await fetchWeather(location);
     console.log(response);
     return response;

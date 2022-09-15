@@ -1,8 +1,11 @@
 import React from "react";
+import { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { fetchNewQuote } from "./QuotesSlice";
+import { fetchQuote } from "./QuoteAPI";
+import { addQuote, fetchNewQuote } from "./QuotesSlice";
 import { selectQuote } from "./QuotesSlice";
+import "./Quotes.css";
 
 const logo = (
   <div>
@@ -24,13 +27,17 @@ const logo = (
   </div>
 );
 function Quotes() {
-  const dispatch = useDispatch();
   const quoteAndAuthor = useSelector(selectQuote);
-  console.log(quoteAndAuthor);
-  dispatch(fetchNewQuote);
+  const dispatch = useDispatch();
 
+  console.log(quoteAndAuthor);
+  useEffect(() => {
+    dispatch(fetchNewQuote());
+  }, [dispatch]);
+
+  // return <div>Hello</div>;
   if (quoteAndAuthor.loading) {
-    return <div></div>;
+    return <div>Loading</div>;
   } else if (
     quoteAndAuthor.failedToLoad === true &&
     quoteAndAuthor.loading === false
@@ -41,9 +48,10 @@ function Quotes() {
     quoteAndAuthor.failedToLoad === false
   ) {
     return (
-      <div>
-        {quoteAndAuthor.quote}
-        {quoteAndAuthor.author}
+      <div class="actualQuote">
+        <h2 className="quote">{quoteAndAuthor.quote}</h2>
+        <br></br>
+        <h3 className="author">{quoteAndAuthor.author}</h3>
       </div>
     );
   }
